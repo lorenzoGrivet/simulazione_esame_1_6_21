@@ -13,8 +13,7 @@ class View(ft.UserControl):
         self._controller = None
         # graphical elements
         self._title = None
-        self.ddyear = None
-        self.ddshape = None
+
         self.btn_graph = None
         self.txt_result = None
         self.txt_container = None
@@ -32,16 +31,20 @@ class View(ft.UserControl):
         #row 1
         self.ddGene = ft.Dropdown(label="Scegli un gene")
         self.btn_graph = ft.ElevatedButton(text="Crea grafo", on_click=self._controller.handle_crea_grafo)
+        self.btn_geni_adiacenti=ft.ElevatedButton(text="Crea grafo", on_click=self._controller.handle_geni_adiacenti)
 
-        row1 = ft.Row([ft.Container(self.ddGene, width=300),ft.Container(self.btn_graph, width=300)], alignment=ft.MainAxisAlignment.CENTER)
-        self._page.controls.append(row1)
+        row1=ft.Row([ft.Container(self.btn_graph,width=500)],alignment=ft.MainAxisAlignment.CENTER)
+        self._page.add(row1)
+
+        row2 = ft.Row([ft.Container(self.ddGene, width=300),ft.Container(self.btn_geni_adiacenti, width=300)], alignment=ft.MainAxisAlignment.CENTER)
+        self._page.controls.append(row2)
         # self._controller.fillDDTeams()
 
         self.txtIng= ft.TextField(label="Numeri ingegneri: ")
         self.btn_simulazione=ft.ElevatedButton(text="Simulazione",on_click=self._controller.handle_simulazione)
 
-        row2=ft.Row([ft.Container(self.txtIng,width=300),ft.Container(self.btn_simulazione,width=300)],alignment=ft.MainAxisAlignment.CENTER)
-        self._page.add(row2)
+        row3=ft.Row([ft.Container(self.txtIng,width=300),ft.Container(self.btn_simulazione,width=300)],alignment=ft.MainAxisAlignment.CENTER)
+        self._page.add(row3)
 
         self.txt_result = ft.ListView(expand=1, spacing=10, padding=20, auto_scroll=True)
         self._page.controls.append(self.txt_result)
