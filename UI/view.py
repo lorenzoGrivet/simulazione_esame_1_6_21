@@ -26,20 +26,22 @@ class View(ft.UserControl):
 
     def load_interface(self):
         # title
-        self._title = ft.Text("simulazione esame 30/06/2023", color="blue", size=24)
+        self._title = ft.Text("simulazione esame 1/6/21", color="blue", size=24)
         self._page.controls.append(self._title)
 
         #row 1
-        self.ddTeams = ft.Dropdown(label="Scegli una squadra")
+        self.ddGene = ft.Dropdown(label="Scegli un gene")
         self.btn_graph = ft.ElevatedButton(text="Crea grafo", on_click=self._controller.handle_crea_grafo)
 
-        row1 = ft.Row([ft.Container(self.ddTeams, width=300),
-                      ft.Container(self.btn_graph, width=300)], alignment=ft.MainAxisAlignment.CENTER)
+        row1 = ft.Row([ft.Container(self.ddGene, width=300),ft.Container(self.btn_graph, width=300)], alignment=ft.MainAxisAlignment.CENTER)
         self._page.controls.append(row1)
-        self._controller.fillDDTeams()
+        # self._controller.fillDDTeams()
 
+        self.txtIng= ft.TextField(label="Numeri ingegneri: ")
+        self.btn_simulazione=ft.ElevatedButton(text="Simulazione",on_click=self._controller.handle_simulazione)
 
-
+        row2=ft.Row([ft.Container(self.txtIng,width=300),ft.Container(self.btn_simulazione,width=300)],alignment=ft.MainAxisAlignment.CENTER)
+        self._page.add(row2)
 
         self.txt_result = ft.ListView(expand=1, spacing=10, padding=20, auto_scroll=True)
         self._page.controls.append(self.txt_result)
